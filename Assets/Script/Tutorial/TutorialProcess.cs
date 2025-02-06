@@ -12,9 +12,9 @@ public class TutorialProcess : MonoBehaviour
 
     [SerializeField] KeyCode[] keyCodeA;
     [SerializeField] KeyCode[] keyCodeB;
-    
-    
-    private int processIndex = 0;
+
+
+	[SerializeField] private int processIndex = 0;
     private float timeCounting = 0;
 
     void Start()
@@ -31,29 +31,29 @@ public class TutorialProcess : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (processIndex < waitTime.Length && waitTime[processIndex] < timeCounting)
-        //{
-			
-        //}
+        if (processIndex < waitTime.Length && waitTime[processIndex] < timeCounting)
+        {
+            MoveTutorial();
+        }
 
-		MoveTutorial();
 		timeCounting += Time.deltaTime;
-        Debug.Log(processIndex);
 	}
 
     private void MoveTutorial()
     {
-        if (processIndex >= keyCodeA.Length) return;
-
 		textImageObjects[processIndex].gameObject.SetActive(true);
+
+        if (processIndex >= keyCodeA.Length) return;
 
 		if (Input.GetKeyDown(keyCodeA[processIndex]) || Input.GetKeyDown(keyCodeA[processIndex]))
         {
-            processIndex++;
             foreach (var item in textImageObjects)
             {
                 item.gameObject.SetActive(false);
             }
+            
+            processIndex++;
+            ResetTime();
         }
     }
 

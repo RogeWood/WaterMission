@@ -37,7 +37,7 @@ public class MainMenuSenceButtonController : MonoBehaviour
 
     public void OnClickStartGame()
     {
-        SceneManager.LoadScene("Story1");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void OnClickCloseGame()
