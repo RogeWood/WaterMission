@@ -1,6 +1,7 @@
 //using System.Collections;
 //using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialButtonController : MonoBehaviour
 {
@@ -19,5 +20,10 @@ public class TutorialButtonController : MonoBehaviour
 	public void OnClickESC()
 	{
 		pausePanel.SetActive(true);
+	}
+
+	public void OnClickBack()
+	{
+		SceneManager.LoadScene("MainMenu");
 	}
 }

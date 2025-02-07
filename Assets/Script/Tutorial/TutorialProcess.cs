@@ -17,15 +17,18 @@ public class TutorialProcess : MonoBehaviour
 	[SerializeField] private int processIndex = 0;
     private float timeCounting = 0;
 
-    void Start()
+	private void Awake()
+	{
+		Time.timeScale = 0f;
+	}
+	void Start()
     {
         player.GetComponent<Transform>().position = new Vector3(9, 17, 0);
 		foreach (var item in textImageObjects)
 		{
 			item.gameObject.SetActive(false);
 		}
-
-
+        Time.timeScale = 1f;
 	}
 
     // Update is called once per frame
@@ -45,7 +48,7 @@ public class TutorialProcess : MonoBehaviour
 
         if (processIndex >= keyCodeA.Length) return;
 
-		if (Input.GetKeyDown(keyCodeA[processIndex]) || Input.GetKeyDown(keyCodeA[processIndex]))
+		if (Input.GetKeyDown(keyCodeA[processIndex]) || Input.GetKeyDown(keyCodeB[processIndex]))
         {
             foreach (var item in textImageObjects)
             {

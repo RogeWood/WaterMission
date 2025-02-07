@@ -10,10 +10,15 @@ public class MainMenuSenceButtonController : MonoBehaviour
 	[SerializeField] RectTransform startbuttonRectTransform;
 	[SerializeField] RectTransform closebuttonRectTransform;
 
+	private void Awake()
+	{
+		Time.timeScale = 0f;
+	}
 
 	// Start is called before the first frame update
 	void Start()
     {
+        Time.timeScale = 1f;
         controllDiscribePanel.SetActive(false);
     }
 

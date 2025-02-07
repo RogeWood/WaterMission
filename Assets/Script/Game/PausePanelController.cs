@@ -31,9 +31,11 @@ public class PausePanelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pausePanel.activeSelf) PauseGame();
+
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if (settingPanel.activeSelf)
+            if (settingPanel.activeSelf || targetPanel.activeSelf)
                 OnClickCloseSetting();
 			else if (pausePanel.activeSelf)
                 pausePanel.SetActive(false);
@@ -60,7 +62,9 @@ public class PausePanelController : MonoBehaviour
     public void OnClickButtonBackToGame()
     {
         pausePanel.SetActive(false);
-    }
+        ContinueGame();
+
+	}
 
     public void OnClickButtonBackToMenu()
     {
@@ -88,4 +92,13 @@ public class PausePanelController : MonoBehaviour
 		settingPanel.SetActive(false);
 	}
 
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+
+    private void ContinueGame()
+    {
+        Time.timeScale = 1f;
+    }
 }

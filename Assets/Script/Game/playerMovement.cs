@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private bool isCanMove = true;
 
 
-	
+
 	[SerializeField] private bool isGrounded;  // 是否在地面上
 	[SerializeField] private float moveSpeed = 5f;  // 移動速度
 	[SerializeField] private float jumpForce = 8f;  // 跳躍力度
@@ -71,6 +71,10 @@ public class playerMovement : MonoBehaviour
 		if (collision.gameObject.CompareTag("Ground"))
 		{
 			isGrounded = true;
+		}
+		else
+		{
+			isGrounded = false;
 		}
 	}
 
